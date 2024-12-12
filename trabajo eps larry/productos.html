@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión CRUD Cliente, Producto y Factura</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100vh; /* Asegura que el body ocupe toda la altura de la pantalla */
+            overflow-y: auto; /* Permite el desplazamiento */
+            background: linear-gradient(to bottom, green, black); /* Degradado verde a negro */
+            color: white; /* Texto blanco para mejor contraste */
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .form-container {
+            max-height: calc(100vh - 2rem); /* Hace que el formulario tenga un máximo de altura, dejando espacio para márgenes */
+            overflow-y: auto; /* Habilita el desplazamiento dentro del formulario si es necesario */
+            background-color: white; /* Fondo blanco */
+            color: black; /* Color de texto negro */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mx-auto mt-10">
+        <nav class="bg-white p-4 rounded-lg shadow-md">
+            <ul class="flex justify-center space-x-6">
+                <li>
+                    <a href="clientes.html" class="text-blue-500 hover:underline">Clientes</a>
+                </li>
+                <li>
+                    <a href="facturas.html" class="text-blue-500 hover:underline">Facturas</a>
+                </li>
+                <li>
+                    <a href="index.html" class="text-blue-500 hover:underline">Menú</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <div class="container">
+        <div class="form-container bg-white p-8 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Gestión de Producto</h2>
+        <form action="metodosCRUD.php" method="POST">
+            <!-- Sección para Producto -->
+            <h3 class="text-xl font-semibold text-gray-800 mb-4">Gestión de Producto</h3>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="nombre_producto">Nombre Producto</label>
+                <input 
+                    type="text" 
+                    name="nombre_producto" 
+                    id="nombre_producto" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Ingrese el nombre del producto">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="lote_producto">Lote Producto</label>
+                <input 
+                    type="text" 
+                    name="lote_producto" 
+                    id="lote_producto" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Ingrese el lote del producto">
+            </div>
+            <div class="mb-6">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="valor">Valor</label>
+                <input 
+                    type="text" 
+                    name="valor" 
+                    id="valor" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Ingrese el valor del producto">
+            </div>
+
+            <!-- Botones CRUD para Producto -->
+            <div class="grid grid-cols-2 gap-6 mb-6">
+                <button 
+                    type="submit" 
+                    name="accion" 
+                    value="create" 
+                    class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                    Crear Producto
+                </button>
+                <button 
+                    type="submit" 
+                    name="accion" 
+                    value="read" 
+                    class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                    Buscar Producto
+                </button>
+                <button 
+                    type="submit" 
+                    name="accion" 
+                    value="update" 
+                    class="w-full bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                    Actualizar Producto
+                </button>
+                <button 
+                    type="submit" 
+                    name="accion" 
+                    value="delete" 
+                    class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                    Eliminar Producto
+                </button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionar Facturas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            height: 100%; /* Asegura que el body ocupe toda la altura disponible */
+            margin: 0; /* Elimina el margen por defecto */
+            display: flex;
+            flex-direction: column; /* Hace que el contenido se apile verticalmente */
+            justify-content: flex-start; /* Alinea el contenido desde la parte superior */
+            align-items: center; /* Centra los elementos horizontalmente */
+            background: linear-gradient(to bottom, #ff0000, #000000); /* Gradiente de rojo a negro */
+            overflow-y: auto; /* Permite el desplazamiento vertical cuando sea necesario */
+        }
+
+        .container {
+            width: 100%; /* Asegura que ocupe todo el ancho disponible */
+            max-width: 1200px;
+            padding: 2rem;
+            display: flex;
+            justify-content: center; /* Centra los elementos horizontalmente */
+            align-items: center; /* Centra los elementos verticalmente */
+            margin-top: 10px; /* Agrega un espacio desde la parte superior de la pantalla */
+        }
+        
+        .form-container {
+            width: 100%;
+            max-width: 600px;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            width: 100%;
+            position: sticky;
+            top: 0;
+            z-index: 10; /* Asegura que el menú se quede en la parte superior */
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <nav class="bg-white p-4 rounded-lg shadow-md w-full">
+            <ul class="flex justify-center space-x-6">
+                <li>
+                    <a href="clientes.html" class="text-blue-500 hover:underline">Clientes</a>
+                </li>
+                <li>
+                    <a href="productos.html" class="text-blue-500 hover:underline">Productos</a>
+                </li>
+                <li>
+                    <a href="index.html" class="text-blue-500 hover:underline">Menú</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Formulario centrado en el medio de la página -->
+    <div class="container mt-10">
+        <div class="form-container">
+            <h2 class="text-2xl font-semibold text-gray-800 text-center mb-6">Gestionar Facturas</h2>
+            <form action="metodosCRUD.php" method="POST">
+                <!-- ID Factura -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="id_factura">ID Factura</label>
+                    <input type="number" name="id_factura" id="id_factura" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese el ID de la factura">
+                </div>
+
+                <!-- Número de Factura -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="numero_factura">Número de Factura</label>
+                    <input type="text" name="numero_factura" id="numero_factura" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese el número de factura">
+                </div>
+
+                <!-- ID Cliente -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="id_cliente">ID Cliente</label>
+                    <input type="number" name="id_cliente" id="id_cliente" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese el ID del cliente">
+                </div>
+
+                <!-- ID Producto -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="id_producto">ID Producto</label>
+                    <input type="number" name="id_producto" id="id_producto" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese el ID del producto">
+                </div>
+
+                <!-- Cantidad -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="cantidad">Cantidad</label>
+                    <input type="number" name="cantidad" id="cantidad" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese la cantidad">
+                </div>
+
+                <!-- Valor Total -->
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="valor_total">Valor Total</label>
+                    <input type="number" name="valor_total" id="valor_total" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Ingrese el valor total">
+                </div>
+
+                <!-- Botones CRUD -->
+                <div class="grid grid-cols-2 gap-4">
+                    <button type="submit" name="accion" value="create" class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                        Crear
+                    </button>
+                    <button type="submit" name="accion" value="read" class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                        Buscar
+                    </button>
+                    <button type="submit" name="accion" value="update" class="w-full bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                        Actualizar
+                    </button>
+                    <button type="submit" name="accion" value="delete" class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none">
+                        Eliminar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
